@@ -69,10 +69,8 @@ M.go_to_translation = function(filePath)
 		return
 	end
 	-- Search for token in file in new buffer
-	vim.cmd("edit " .. filePath)
-	vim.wait(300)
-	vim.cmd("normal /\\<" .. token .. "\\><cr>")
-	vim.wait(300)
+	local searchWord = "\\\\<" .. token .. "\\\\>"
+	vim.cmd("edit +/" .. searchWord .. " " .. filePath)
 end
 
 return M

@@ -1,6 +1,9 @@
-# i18n support for Nvim
+# i18n lookup for Nvim
 
-This plugins provides a simply way to go to definition for strings in your codebase, looking for definitions in various translation json files.
+This plugins provides a simply way to look up definitions for language keyed strings in your codebase.
+It does so by simple key look up in the configured translation files.
+
+This is intended to be used with setups like i18next and accompanying localization/en.json, localization/da.json, etc. files.
 
 ## Configuration
 
@@ -18,4 +21,29 @@ require('i18n').setup({
 })
 ```
 
-With this setup, you can put your cursor at a string in your codebase, and press they keymap you've set up (per language) to jump to the definition of that string in that translation file. 
+For example, if you have a translation file `en.json` like this:
+```json
+// en.json
+{
+  "hello": "Hello",
+}
+```
+And you set up the configuration like this:
+```lua
+// init.lua, or as part of your plugin config
+require('i18n').setup({
+  {
+    filePath = 'path/to/your/en.json',
+    keymap = '<leader>en'
+  }
+})
+```
+
+You can press `<leader>en` while your cursor is anywhere inside the string "hello" to look it up in the `en.json` file.
+```typescript
+const greeting = t('hello'); // pressing <leader>en while your cursor is in the string will open the en.json file and go to the "hello" key
+```
+
+
+
+
