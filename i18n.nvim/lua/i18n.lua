@@ -26,7 +26,7 @@ M.setup = function(opts)
 end
 
 local function char_is_quote(c)
-	return c == '"' or c == "'"
+	return c == '"' or c == "'" or c == "`"
 end
 
 --- Get all text inside quotes around cursor

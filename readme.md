@@ -1,3 +1,3 @@
 # NeoVim Plugins
 
-My experiments with writing NeoVim plugins.
+A collection of small NeoVim plugins I've made for myself. 
